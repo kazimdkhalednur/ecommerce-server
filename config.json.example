@@ -7,5 +7,7 @@
   "DB_USER": null,
   "DB_PASSWORD": null,
   "DB_HOST": null,
-  "DB_PORT": null
+  "DB_PORT": null,
+  "SIMPLE_JWT_SECRET_KEY": "put_your_secret_key_here_or_create_new_secret_key_and_put_here",
+  "CORS_ALLOWED_ORIGINS": ["put list of frontend urls"]
 }
