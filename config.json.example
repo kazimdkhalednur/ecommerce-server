@@ -1,0 +1,11 @@
+{
+  "SECRET_KEY": "put_your_secret_key_here",
+  "DEBUG": true,
+  "ALLOWED_HOSTS": ["*"],
+  "DB_ENGINE": null,
+  "DB_NAME": null,
+  "DB_USER": null,
+  "DB_PASSWORD": null,
+  "DB_HOST": null,
+  "DB_PORT": null
+}
