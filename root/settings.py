@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # third party
+    "corsheaders",
+    "rest_framework",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -128,6 +132,26 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# rest_framework configurations
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
+
+# rest_framework JWT configurations
+SIMPLE_JWT_SECRET_KEY = CONFIG.get("SIMPLE_JWT_SECRET_KEY")
+SIMPLE_JWT = {
+    "SIGNING_KEY": SIMPLE_JWT_SECRET_KEY,
+}
+
+
+# django-cors-headers configurations
+CORS_ALLOWED_ORIGINS = [
+    CORS_ALLOWED_ORIGIN for CORS_ALLOWED_ORIGIN in CONFIG.get("CORS_ALLOWED_ORIGINS")
+]
 
 # import local_settings when DEBUG mode is True
 if DEBUG:
