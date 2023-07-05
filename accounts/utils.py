@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.models import Site
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
 from django.urls import reverse
@@ -8,9 +9,9 @@ from django.utils.http import urlsafe_base64_encode
 
 from .tokens import activation_token
 
+domain = Site.objects.get_current().domain
 
 def get_website_url(request):
-    domain = get_current_site(request).domain
     protocol = "https" if request.is_secure() else "http"
     return protocol + "://" + domain
 
@@ -28,12 +29,12 @@ def send_verification_email(request, user):
         + user.first_name
         + " "
         + user.last_name
-        + "\nWelcome to example.com. Click this link to verify your account.\n"
+        + f"\nWelcome to {domain}. Click this link to verify your account.\n"
         + activation_link
     )
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(
-        subject, body, f"example.com <{from_email}>", [user.email]
+        subject, body, f"{domain} <{from_email}>", [user.email]
     )
     msg.send(fail_silently=False)
 
@@ -54,12 +55,12 @@ def send_verification_email_for_change_email(request, email):
         + user.first_name
         + " "
         + user.last_name
-        + "\nWelcome to example.com. Click this link to verify your email.\n"
+        + f"\nWelcome to {domain}. Click this link to verify your email.\n"
         + activation_link
     )
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(
-        subject, body, f"example.com <{from_email}>", [user.email]
+        subject, body, f"{domain} <{from_email}>", [user.email]
     )
     msg.send(fail_silently=False)
 
@@ -77,11 +78,11 @@ def send_reset_password_email(request, user):
         + user.first_name
         + " "
         + user.last_name
-        + "\nWelcome to example.com. Click this link to reset password your account.\n"
+        + f"\nWelcome to {domain}. Click this link to reset password your account.\n"
         + activation_link
     )
     from_email = settings.DEFAULT_FROM_EMAIL
     msg = EmailMultiAlternatives(
-        subject, body, f"example.com <{from_email}>", [user.email]
+        subject, body, f"{domain} <{from_email}>", [user.email]
     )
     msg.send(fail_silently=False)
