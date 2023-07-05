@@ -9,5 +9,13 @@
   "DB_HOST": null,
   "DB_PORT": null,
   "SIMPLE_JWT_SECRET_KEY": "put_your_secret_key_here_or_create_new_secret_key_and_put_here",
-  "CORS_ALLOWED_ORIGINS": ["put list of frontend urls"]
+  "CORS_ALLOWED_ORIGINS": ["put list of frontend urls"],
+  "EMAIL_BACKEND": null,
+  "EMAIL_HOST": null,
+  "EMAIL_PORT": null,
+  "EMAIL_HOST_USER": null, 
+  "EMAIL_HOST_PASSWORD": null,
+  "SERVER_EMAIL": null,
+  "DEFAULT_FROM_EMAIL": null,
+  "CLIENT_URL": null
 }
