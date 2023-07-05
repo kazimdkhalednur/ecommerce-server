@@ -10,5 +10,8 @@ DATABASES = {
 }
 
 # actually ACCESS_TOKEN_LIFETIME is 5 minutes but development purpose
-# ACCESS_TOKEN_LIFETIME is 1 day
-SIMPLE_JWT.update({"ACCESS_TOKEN_LIFETIME": timedelta(days=1)})
+# ACCESS_TOKEN_LIFETIME is 30 day
+SIMPLE_JWT.update({"ACCESS_TOKEN_LIFETIME": timedelta(days=30)})
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

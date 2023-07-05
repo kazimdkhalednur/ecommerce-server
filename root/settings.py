@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # my apps
+    "accounts.apps.AccountsConfig",
     # third party
     "corsheaders",
     "rest_framework",
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -91,6 +94,10 @@ DATABASES = {
         "PORT": CONFIG.get("DB_PORT"),
     }
 }
+
+
+AUTH_USER_MODEL = "accounts.User"
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -152,6 +159,21 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     CORS_ALLOWED_ORIGIN for CORS_ALLOWED_ORIGIN in CONFIG.get("CORS_ALLOWED_ORIGINS")
 ]
+
+# email configurations
+EMAIL_BACKEND = CONFIG.get("EMAIL_BACKEND")
+EMAIL_PORT = CONFIG.get("EMAIL_PORT")
+EMAIL_HOST = CONFIG.get("EMAIL_HOST")
+EMAIL_HOST_USER = CONFIG.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = CONFIG.get("EMAIL_HOST_PASSWORD")
+SERVER_EMAIL = CONFIG.get("EMAIL_HOST_USER")
+DEFAULT_FROM_EMAIL = CONFIG.get("DEFAULT_FROM_EMAIL")
+
+EMAIL_VERIFY_TIMEOUT = 180  # in seconds
+
+
+CLIENT_URL = CONFIG.get("CLIENT_URL")
+
 
 # import local_settings when DEBUG mode is True
 if DEBUG:
