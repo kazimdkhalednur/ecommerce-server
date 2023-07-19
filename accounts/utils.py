@@ -11,6 +11,7 @@ from .tokens import activation_token
 
 domain = Site.objects.get_current().domain
 
+
 def get_website_url(request):
     protocol = "https" if request.is_secure() else "http"
     return protocol + "://" + domain

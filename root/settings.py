@@ -40,14 +40,17 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.sites",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     # my apps
     "accounts.apps.AccountsConfig",
+    "products.apps.ProductsConfig",
     # third party
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
+    "mptt",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -138,6 +141,9 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = "image/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

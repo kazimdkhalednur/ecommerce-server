@@ -10,7 +10,10 @@ click-didyoumean==0.3.0
 click-plugins==1.1.1
 click-repl==0.3.0
 Django==4.2.2
+django-ckeditor==6.6.1
 django-cors-headers==4.1.0
+django-js-asset==2.1.0
+django-mptt==0.14.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
 idna==3.4
